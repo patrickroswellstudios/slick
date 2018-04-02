@@ -356,6 +356,14 @@
             asNavFor.each(function() {
                 var target = $(this).slick('getSlick');
                 if(!target.unslicked) {
+                     if (_.$slidesCache !== null) {
+                          var filteredIndex = index;
+                          target.$slides.each(function(slideIndex,slideElement){
+                               if (filteredIndex == $(slideElement).data('slick-index')) {
+                                    index = slideIndex;
+                               }
+                          )
+                     }
                     target.slideHandler(index, true);
                 }
             });
